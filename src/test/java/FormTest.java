@@ -12,10 +12,9 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.Random;
 
-public class FormTest {
+public class FormTest extends TestBase {
 
-    WebDriver driver;
-    ChromeOptions options;
+
 
     public WebElement getRandomElement(List<WebElement> elements) {
         //Ta metoda przyjmuje listę, a zwraca jeden WebElement
@@ -24,18 +23,9 @@ public class FormTest {
         return elements.get(randomNumber); //zwraca element o losowym indeksie. Metoda get jest dostępna z selenium do obsługi list
     }
 
-    @BeforeMethod
-    public void setUp() {
-
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Tester\\Desktop\\shop\\shop\\Selenium\\chromedriver.exe");
-        options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        driver = new ChromeDriver(options);
-
-    }
 
     @Test
-    public void testForm() {
+    public void testForm(){
 
 
         driver.get("http://seleniumui.tc-sii.com/form.php");
@@ -82,9 +72,5 @@ public class FormTest {
 
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-    }
 
 }
