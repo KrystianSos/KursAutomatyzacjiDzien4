@@ -19,7 +19,7 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        //driver.close();
+        driver.close();
     }
 
     public void Sleep() {
