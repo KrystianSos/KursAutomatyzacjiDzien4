@@ -22,4 +22,12 @@ public class TestBase {
         //driver.close();
     }
 
+    public void Sleep() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
