@@ -20,12 +20,12 @@ public class FormTest {
     public WebElement getRandomElement(List<WebElement> elements) {
         //Ta metoda przyjmuje listę, a zwraca jeden WebElement
         Random random = new Random();
-        int randomNumber = random.nextInt(elements.size()-1); //losuje wartość z zadanego przedziału
+        int randomNumber = random.nextInt(elements.size() - 1); //losuje wartość z zadanego przedziału
         return elements.get(randomNumber); //zwraca element o losowym indeksie. Metoda get jest dostępna z selenium do obsługi list
     }
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Tester\\Desktop\\shop\\shop\\Selenium\\chromedriver.exe");
         options = new ChromeOptions();
@@ -33,7 +33,6 @@ public class FormTest {
         driver = new ChromeDriver(options);
 
     }
-
 
     @Test
     public void testForm() {
@@ -55,14 +54,20 @@ public class FormTest {
 
         driver.findElement(By.cssSelector("[id='gridCheckAutomationTester']")).click();
 
+        //Losowanie z listy rozwijanej (kontynenty)
 
+        WebElement continentElement = driver.findElement(By.id("selectContinents"));
+        Select continentSelect = new Select(continentElement);
+        List<WebElement> allOptions = continentSelect.getOptions();
+        WebElement randomOption = getRandomElement(allOptions);
+        continentSelect.selectByVisibleText(randomOption.getText());
 
-
+        //Wybór z listy rozwijanej (kontynenty)
+/*
         driver.findElement(By.cssSelector("[id='selectContinents']")).click();
         WebElement continentsElement = driver.findElement(By.cssSelector("[id='selectContinents']"));
         Select continentsSelect = new Select(continentsElement);
-        continentsSelect.selectByValue("europe");
-
+        continentsSelect.selectByValue("europe");*/
 
 
         driver.findElement(By.cssSelector("[value='switch-commands']")).click();
@@ -71,16 +76,15 @@ public class FormTest {
         driver.findElement(By.cssSelector("[id='additionalInformations']")).sendKeys("Dodatkowe informacje");
         driver.findElement(By.cssSelector("[type='submit']")).click();
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("[id='validator-message']")).getText(), "Form send with success");
+        //Asercja wiadomości pod buttonem "Sign in"
+        String messageText = driver.findElement(By.cssSelector("[id='validator-message']")).getText();
+        Assert.assertEquals(messageText, "Form send with success");
 
     }
 
-
-
-
     @AfterMethod
-    public void tearDown(){
-      //driver.close();
+    public void tearDown() {
+        driver.close();
     }
 
 }
