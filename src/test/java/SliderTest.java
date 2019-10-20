@@ -12,9 +12,7 @@ public class SliderTest extends TestBase {
         driver.findElement(By.id("custom-handle")).sendKeys(Keys.ARROW_RIGHT);
     }
 
-
     public void moveTo(int number) {
-
 
         int actualValue = 0;
 

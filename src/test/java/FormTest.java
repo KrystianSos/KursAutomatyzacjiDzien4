@@ -1,19 +1,14 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 import java.util.Random;
 
 public class FormTest extends TestBase {
-
 
 
     public WebElement getRandomElement(List<WebElement> elements) {
@@ -25,7 +20,7 @@ public class FormTest extends TestBase {
 
 
     @Test
-    public void testForm(){
+    public void testForm() {
 
 
         driver.get("http://seleniumui.tc-sii.com/form.php");
@@ -62,7 +57,8 @@ public class FormTest extends TestBase {
 
         driver.findElement(By.cssSelector("[value='switch-commands']")).click();
 
-        driver.findElement(By.cssSelector("[id='chooseFile']")).sendKeys("C:\\Users\\Tester\\pictures\\11.png");
+        File file = new File("src\\main\\resources\\fail-TestSiiKoszyk-13.png");
+        driver.findElement(By.cssSelector("[id='chooseFile']")).sendKeys(file.getAbsolutePath());
         driver.findElement(By.cssSelector("[id='additionalInformations']")).sendKeys("Dodatkowe informacje");
         driver.findElement(By.cssSelector("[type='submit']")).click();
 
