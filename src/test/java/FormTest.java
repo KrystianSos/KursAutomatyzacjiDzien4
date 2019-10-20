@@ -10,12 +10,22 @@ import java.util.Random;
 
 public class FormTest extends TestBase {
 
+    //https://github.com/mtadla-sii/selenium-basic-1019 - repo z ćwiczeń
+
 
     public WebElement getRandomElement(List<WebElement> elements) {
         //Ta metoda przyjmuje listę, a zwraca jeden WebElement
         Random random = new Random();
         int randomNumber = random.nextInt(elements.size() - 1); //losuje wartość z zadanego przedziału
         return elements.get(randomNumber); //zwraca element o losowym indeksie. Metoda get jest dostępna z selenium do obsługi list
+    }
+
+    public void Sleep() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -67,6 +77,5 @@ public class FormTest extends TestBase {
         Assert.assertEquals(messageText, "Form send with success");
 
     }
-
 
 }
