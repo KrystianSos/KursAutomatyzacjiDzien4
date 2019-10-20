@@ -1,7 +1,9 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +13,9 @@ public class CalendarTest extends TestBase {
     @Test
     public void Test() {
         driver.get("http://seleniumui.tc-sii.com/datepicker.php");
-        moveTo("10", "December", 2020);
+        moveTo("4", "January", 2018);
+        String selectdate = driver.findElement(By.id("datepicker")).getAttribute("value");
+        Assert.assertEquals(selectdate, "01/04/2018");
     }
 
     private void moveTo(String expectedDay, String expectedMonth, int expectedYear) {
