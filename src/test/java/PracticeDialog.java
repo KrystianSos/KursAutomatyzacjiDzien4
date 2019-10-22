@@ -22,7 +22,7 @@ public class PracticeDialog extends TestBase {
         fillInForm("Wojtek woj", "wojtek@mariano.pl", "wojtek1");
         fillInForm("Wlodek Mariano", "wlodek@mariano.pl", "wlodek23");
         fillInForm("Agnes Mariano", "agnes@mariano.pl", "agnetysi1");
-        
+
     }
 
 }
